@@ -45,20 +45,33 @@ try {
 
     // Run terraform apply
     stage('apply') {
-      node {
-        withCredentials([[
-          $class: 'AmazonWebServicesCredentialsBinding',
-          credentialsId: credentialsId,
-          accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-          secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-        ]]) {
-          ansiColor('xterm') {
-            sh 'terraform apply -auto-approve'
+			steps {
+                script{
+                    def apply = false
+                    try {
+                        input message: 'Can you please confirm the apply', ok: 'Ready to Apply the Config'
+                        apply = true
+						} catch (err) {
+                        apply = false
+                         currentBuild.result = 'UNSTABLE'
+						}
+					}	
+                    if(apply){
+						node {
+								withCredentials([[
+								  $class: 'AmazonWebServicesCredentialsBinding',
+								  credentialsId: credentialsId,
+								  accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+								  secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+								]]) {
+								  ansiColor('xterm') {
+									sh 'terraform apply -auto-approve'
           }
         }
       }
     }
-
+}
+}
     // Run terraform show
     stage('show') {
       node {
