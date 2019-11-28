@@ -45,7 +45,7 @@ try {
 
     // Run terraform apply
     stage('apply') {
-			steps {
+			node {
                 script{
                     def apply = false
                     try {
@@ -57,7 +57,7 @@ try {
 						}
 					}	
                     if(apply){
-						node {
+						
 								withCredentials([[
 								  $class: 'AmazonWebServicesCredentialsBinding',
 								  credentialsId: credentialsId,
