@@ -11,7 +11,7 @@ resource "aws_instance" "WebServerInstance01" {
   ami           = var.ami
   instance_type = "t2.micro"
   key_name = "Mykey"
-  user_data = "${file("/config/WebServer01.sh")}"
+  user_data = file("${path.module}/Config/WebServer01.sh")
   depends_on = [aws_security_group.WebServer_linux]
   tags = {
            Name = "WebServerLinux01"
@@ -24,7 +24,7 @@ resource "aws_instance" "WebServerInstance02" {
   ami           = var.ami
   instance_type = "t2.micro"
   key_name = "Mykey"
-  user_data = "${file("/config/WebServer02.sh")}"
+  user_data = file("${path.module}/Config/WebServer02.sh")
   depends_on = [aws_security_group.WebServer_linux]
   tags = {
            Name = "WebServerLinux02"
