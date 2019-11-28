@@ -15,8 +15,8 @@ try {
       withCredentials([[
         $class: 'AmazonWebServicesCredentialsBinding',
         credentialsId: credentialsId,
-        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        accessKeyVariable: 'aws_access_key',
+        secretKeyVariable: 'aws_secret_access_key'
       ]]) {
         ansiColor('xterm') {
           sh 'terraform init'
@@ -31,8 +31,8 @@ try {
       withCredentials([[
         $class: 'AmazonWebServicesCredentialsBinding',
         credentialsId: credentialsId,
-        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        accessKeyVariable: 'aws_access_key',
+        secretKeyVariable: 'aws_secret_access_key'
       ]]) {
         ansiColor('xterm') {
           sh 'terraform plan'
