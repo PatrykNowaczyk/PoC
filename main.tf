@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket = "terraform-bucket-patryk"
+    key    = "terraform.tfstate"
+    region = "eu-west-3"
+  }
+}
+
+
 provider "aws" {
   version = "~> 2.0"
   region     = "eu-west-3"
