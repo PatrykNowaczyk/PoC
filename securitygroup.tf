@@ -1,4 +1,4 @@
-resource "aws_security_group" "WebServer_linux" {
+resource "aws_security_group" "WebServer_SG" {
   vpc_id      = aws_vpc.main.id
   name        = "WebServer"
   description = "Allow SSH and WWW inbound traffic"
