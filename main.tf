@@ -18,11 +18,11 @@ resource "aws_instance" "WebServerInstance01" {
   instance_type = "t2.micro"
   key_name = "Mykey"
   user_data = "${file("/config/WebServer01.sh")}"
-  depends_on = [aws_security_group.WebServer_linux]
+  depends_on = [aws_security_group.WebServer_SG]
   tags = {
            Name = "WebServerLinux01"
 		   }
-  vpc_security_group_ids = ["${aws_security_group.WebServer_linux.id}"]
+  vpc_security_group_ids = ["${aws_security_group.WebServer_SG.id}"]
   subnet_id = aws_subnet.main-public-1.id
 }
 
@@ -31,11 +31,11 @@ resource "aws_instance" "WebServerInstance02" {
   instance_type = "t2.micro"
   key_name = "Mykey"
   user_data = "${file("/config/WebServer02.sh")}"
-  depends_on = [aws_security_group.WebServer_linux]
+  depends_on = [aws_security_group.WebServer_SG]
   tags = {
            Name = "WebServerLinux02"
 		   }
-  vpc_security_group_ids = ["${aws_security_group.WebServer_linux.id}"]
+  vpc_security_group_ids = ["${aws_security_group.WebServer_SG.id}"]
   subnet_id = aws_subnet.main-public-2.id
 }
 
