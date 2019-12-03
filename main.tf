@@ -5,7 +5,13 @@ provider "aws" {
   secret_key = "${var.aws_secret_access_key}"
 }
 
-
+terraform {
+  backend "s3" {
+    bucket = "terraform-bucket-patryk"
+	key    = "terraform.tfstate"
+	region = "eu-west-3"
+	}
+}
 
 resource "aws_instance" "WebServerInstance01" {
   ami           = var.ami
