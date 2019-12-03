@@ -30,7 +30,6 @@ resource "aws_subnet" "main-public-2" {
     Name = "main-public-2"
   }
 }
-
 resource "aws_subnet" "main-private-1" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.3.0/24"
@@ -57,7 +56,7 @@ resource "aws_internet_gateway" "main-gw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "mainIG"
+    Name = "MainIG"
   }
 }
 
