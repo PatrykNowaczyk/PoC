@@ -13,10 +13,15 @@ terraform {
 	}
 }
 
+resource "aws_key_pair" "Mykeypair" {
+  key_name   = "Mykeypair"
+  public_key = file(var.path_to_public_key)
+  
+}
 resource "aws_instance" "WebServerInstance01" {
   ami           = var.ami
   instance_type = "t2.micro"
-  key_name = "Mykey"
+  key_name = aws_key_pair.mykeypair.key_name
   user_data = file("${path.module}/Config/WebServer01.sh")
   depends_on = [aws_security_group.WebServer_SG]
   tags = {
@@ -29,7 +34,7 @@ resource "aws_instance" "WebServerInstance01" {
 resource "aws_instance" "WebServerInstance02" {
   ami           = var.ami
   instance_type = "t2.micro"
-  key_name = "Mykey"
+  key_name = aws_key_pair.mykeypair.key_name
   user_data = file("${path.module}/Config/WebServer02.sh")
   depends_on = [aws_security_group.WebServer_SG]
   tags = {
