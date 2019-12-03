@@ -8,11 +8,11 @@ variable "ami" {
   default = "ami-0e9e6ba6d3d38faa8"
 }
 variable "path_to_private_key" {
-  default = "Mykey"
+  default = "mykey"
 }
 
 variable "path_to_public_key" {
-  default = "MyPubKey.pub"
+  default = "myPubKey.pub"
 }
 
 variable "instance_username" {
