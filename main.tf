@@ -15,7 +15,7 @@ terraform {
 
 resource "aws_key_pair" "Mykeypair" {
   key_name   = "Mykeypair"
-  public_key = file(var.path_to_public_key)
+  public_key = var.path_to_public_key
   
 }
 resource "aws_instance" "WebServerInstance01" {
