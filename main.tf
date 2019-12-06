@@ -20,7 +20,7 @@ resource "aws_instance" "WebServerInstance01" {
   user_data = file("${path.module}/Config/WebServer01.sh")
   depends_on = [aws_security_group.WebServer_SG]
   tags = {
-           Name = "WebServerLinux01"
+           Name = "WebServerLinux01test"
 		   }
   vpc_security_group_ids = ["${aws_security_group.WebServer_SG.id}"]
   subnet_id = aws_subnet.main-public-1.id
