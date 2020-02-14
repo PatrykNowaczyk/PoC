@@ -16,4 +16,4 @@ On-premises infrastructure consist of the following automation elements:
 - Terraform - deploying resources to the cloud
 
 Using jenkins project (execute shell) to applies to terraform configuration which will deploy infrastructure in AWS. Terraform.tfstate will be saved in S3 bucket which was created earlier. Also, Jenkins has configured webhooks with Github.
-The project is ready to add bastion host, to connect to databases in private subnets or whatever we can imagine.
+Nat Gateway is aleady created which means we can add here bastion host, to connect to databases if we will create them in private subnets. After configuration we can update our databases without connection with internet.
