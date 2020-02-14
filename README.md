@@ -5,5 +5,5 @@ Project aims to deliver IaC deployment based on AWS cloud services + combined on
 
 **Design**
 
-![Test Image 1](POC.png)
+
 
